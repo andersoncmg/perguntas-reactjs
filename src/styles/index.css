@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  background: #e9e9e9;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-content {
+  background-color: white;
+  width: 100%;
+  padding: 20px;
+  min-width: 600px;
+  max-width: 800px;
+  display: flex;
+  margin: 50px;
+}
+
+.box-content.stripe-top {
+  border-top: 5px solid #3db4a9;
+}
+
+.col-30 {
+  width: 29%;
+  display: inline-block;
+}
+.col-70 {
+  width: 69%;
+  display: inline-block;
+}
