@@ -2,9 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "./pages/home";
-import UserPanel from "./pages/userpanel";
 import Register from "./pages/register";
 import Login from "./pages/login";
+
+import Modelos from "./pages/userpanel/perguntas/modelos";
+import Nova from "./pages/userpanel/perguntas/nova";
 
 import { isAutenticado } from "./auth";
 
@@ -39,7 +41,8 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={Home} />
 
-      <PrivateRoute path="/panel" component={UserPanel} />
+      <PrivateRoute path="/painel/modelos-pergunta" component={Modelos} />
+      <PrivateRoute path="/painel/nova-pergunta" component={Nova} />
 
       <VisitorRoute path="/login" component={Login} />
       <VisitorRoute path="/register" component={Register} />
