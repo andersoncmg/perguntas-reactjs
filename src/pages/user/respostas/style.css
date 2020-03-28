@@ -1,0 +1,20 @@
+.question-box strong::before {
+  content: "";
+}
+.option-select .accept {
+  border: none;
+  background: #3db4a9;
+  color: white;
+  padding: 8px 15px;
+  margin-right: 10px;
+}
+.option-select .reject {
+  border: none;
+  background: #be3f3f;
+  color: white;
+  padding: 8px 15px;
+}
+.question-type {
+  font-size: 12px;
+  margin-top: 7px;
+}

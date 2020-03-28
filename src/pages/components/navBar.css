@@ -1,0 +1,17 @@
+nav {
+  position: absolute;
+  top: 0;
+  line-height: 60px;
+  width: 100%;
+  background: black;
+  text-align: center;
+
+  border-bottom: 2px solid #e8019b;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  background: #1c1c1c;
+  margin-right: 5px;
+  padding: 10px 15px;
+}

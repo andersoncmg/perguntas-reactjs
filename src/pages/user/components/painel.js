@@ -18,20 +18,25 @@ export default function Painel(props) {
       </div>
       <div className="menu">
         <ul>
+          <li className="menu-title">Paginas</li>
+          <ul>
+            <li onClick={() => props.history.push("/perguntas")}>Perguntas</li>
+            <li onClick={() => props.history.push("/respostas")}>Respostas</li>
+          </ul>
+          <li className="menu-title">Modelos</li>
+          <ul>
+            <li onClick={() => props.history.push("/meus-modelos")}>
+              Meus Modelos
+            </li>
+            <li onClick={() => props.history.push("/novo-modelo")}>
+              Criar Modelos
+            </li>
+          </ul>
           <li className="menu-title">Gerenciar Conta</li>
           <ul>
             <li>Resumo</li>
             <li>Editar Conta</li>
             <li>Preferencias</li>
-          </ul>
-          <li className="menu-title">Perguntas</li>
-          <ul>
-            <li onClick={() => props.history.push("/painel/modelos-pergunta")}>
-              Modelos de Perguntas
-            </li>
-            <li onClick={() => props.history.push("/painel/nova-pergunta")}>
-              Criar Perguntas
-            </li>
           </ul>
         </ul>
       </div>

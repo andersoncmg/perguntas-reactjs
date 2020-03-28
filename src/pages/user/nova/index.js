@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import Painel from "../../components/painel";
+import Painel from "../components/painel";
 
 export default function index(props) {
   return (

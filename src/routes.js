@@ -5,8 +5,11 @@ import Home from "./pages/home";
 import Register from "./pages/register";
 import Login from "./pages/login";
 
-import Modelos from "./pages/userpanel/perguntas/modelos";
-import Nova from "./pages/userpanel/perguntas/nova";
+import Perguntas from "./pages/user/perguntas";
+import Respostas from "./pages/user/respostas";
+
+import Modelos from "./pages/user/modelos";
+import Nova from "./pages/user/nova";
 
 import { isAutenticado } from "./auth";
 
@@ -41,11 +44,14 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={Home} />
 
-      <PrivateRoute path="/painel/modelos-pergunta" component={Modelos} />
-      <PrivateRoute path="/painel/nova-pergunta" component={Nova} />
+      <PrivateRoute path="/perguntas" component={Perguntas} />
+      <PrivateRoute path="/respostas" component={Respostas} />
+
+      <PrivateRoute path="/meus-modelos" component={Modelos} />
+      <PrivateRoute path="/novo-modelo" component={Nova} />
 
       <VisitorRoute path="/login" component={Login} />
-      <VisitorRoute path="/register" component={Register} />
+      <VisitorRoute path="/cadastro" component={Register} />
     </Switch>
   </BrowserRouter>
 );

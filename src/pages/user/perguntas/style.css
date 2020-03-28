@@ -1,0 +1,63 @@
+.question-box strong {
+  font-size: 13px;
+}
+.question-box strong::before {
+  content: "Q: ";
+}
+.question-box p::before {
+  content: "R: ";
+}
+.question-box p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.question-box span {
+  font-size: 12px;
+  margin-top: 20px;
+  display: block;
+}
+.box-list .form-box {
+  margin: 0;
+}
+.options-box {
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.options-box a {
+  font-size: 12px;
+}
+.options-box .paid-value {
+  border-bottom: 1px solid #3db4a9;
+  padding: 10px;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.options-box .paid-value::before {
+  content: "R$ ";
+  font-size: 10px;
+}
+.tab-index {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border-bottom: 1px solid #1e1e1e;
+  margin-top: 15px;
+}
+.tab-index li {
+  line-height: 40px;
+  margin-bottom: -1px;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 5px;
+  font-size: 13px;
+}
+.tab-index li.selected {
+  border-bottom: 1px solid #3db4a9;
+}
+#tab-content {
+  padding: 10px;
+}

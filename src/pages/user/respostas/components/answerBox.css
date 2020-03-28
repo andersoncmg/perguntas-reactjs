@@ -1,0 +1,21 @@
+.answer {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+.answer button {
+  width: 80px !important;
+  padding: 5px 0 !important;
+  background: none !important;
+  border: 1px solid #1e1e1e !important;
+  margin-right: 10px;
+}
+.answer button.send {
+  background: #3db4a9 !important;
+}
+.answer textarea {
+  width: 100%;
+}
+.question-box {
+  width: 100%;
+}

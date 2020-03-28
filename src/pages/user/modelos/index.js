@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import Painel from "../../components/painel";
+import Painel from "../components/painel";
 
 export default function index(props) {
   return (
@@ -21,7 +21,7 @@ export default function index(props) {
               <div className="price">
                 <span>R$ </span>5,99
               </div>
-              <button>manage</button>
+              <button className="manage-button">manage</button>
             </li>
             <li className="list-item">
               <div className="model-info">
@@ -35,7 +35,7 @@ export default function index(props) {
               <div className="price">
                 <span>R$ </span>5,99
               </div>
-              <button>manage</button>
+              <button className="manage-button">manage</button>
             </li>
           </ul>
           <div></div>

@@ -9,9 +9,23 @@ body,
 #root {
   height: 100%;
 }
+a {
+  text-decoration: none;
+  color: #3db4a9;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #131313 inset !important;
+  -webkit-text-fill-color: #727272 !important;
+}
 
+button {
+  cursor: pointer;
+}
 #root {
-  background: #e9e9e9;
+  background: #0a0a13;
 }
 
 .container {
@@ -24,7 +38,8 @@ body,
 }
 
 .box-content {
-  background-color: white;
+  background-color: #131313;
+  color: white;
   width: 100%;
   padding: 20px;
   min-width: 600px;
