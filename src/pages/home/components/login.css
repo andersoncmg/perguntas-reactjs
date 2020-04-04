@@ -1,0 +1,13 @@
+.form-login {
+  flex-direction: column;
+  margin-top: 0 !important;
+  padding: 20px;
+}
+.form-login button {
+  padding: 0 !important;
+}
+
+.form-login .back {
+  background: none !important;
+  border: 1px solid white;
+}

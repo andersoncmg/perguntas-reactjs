@@ -2,14 +2,16 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "./pages/home";
-import Register from "./pages/register";
-import Login from "./pages/login";
+
+import Perfil from "./pages/perfil";
+import Usuarios from "./pages/usuarios";
 
 import Perguntas from "./pages/user/perguntas";
 import Respostas from "./pages/user/respostas";
 
 import Modelos from "./pages/user/modelos";
 import Nova from "./pages/user/nova";
+import Editar from "./pages/user/editar";
 
 import { isAutenticado } from "./auth";
 
@@ -31,7 +33,9 @@ const VisitorRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={props =>
       isAutenticado() ? (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        <Redirect
+          to={{ pathname: "/meus-modelos", state: { from: props.location } }}
+        />
       ) : (
         <Component {...props} />
       )
@@ -42,16 +46,17 @@ const VisitorRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Home} />
+      <VisitorRoute exact path="/" component={Home} />
 
-      <PrivateRoute path="/perguntas" component={Perguntas} />
-      <PrivateRoute path="/respostas" component={Respostas} />
+      <PrivateRoute exact path="/perfil/:id" component={Perfil} />
+      <PrivateRoute exact path="/usuarios" component={Usuarios} />
 
-      <PrivateRoute path="/meus-modelos" component={Modelos} />
-      <PrivateRoute path="/novo-modelo" component={Nova} />
+      <PrivateRoute exact path="/perguntas" component={Perguntas} />
+      <PrivateRoute exact path="/respostas" component={Respostas} />
 
-      <VisitorRoute path="/login" component={Login} />
-      <VisitorRoute path="/cadastro" component={Register} />
+      <PrivateRoute exact path="/meus-modelos" component={Modelos} />
+      <PrivateRoute exact path="/novo-modelo" component={Nova} />
+      <PrivateRoute exact path="/editar-modelo/:id" component={Editar} />
     </Switch>
   </BrowserRouter>
 );

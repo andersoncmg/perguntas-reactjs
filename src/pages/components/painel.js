@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./painel.css";
+import base from "../../config/api";
 
 export default function Painel(props) {
   return (
@@ -12,32 +13,75 @@ export default function Painel(props) {
           />
         </div>
         <div className="username">
-          <strong>Chacau</strong>
+          <strong>{localStorage.getItem("username")}</strong>
           <span>Perguntador</span>
         </div>
       </div>
       <div className="menu">
         <ul>
-          <li className="menu-title">Paginas</li>
+          <li className="menu-title">Perguntas</li>
           <ul>
-            <li onClick={() => props.history.push("/perguntas")}>Perguntas</li>
-            <li onClick={() => props.history.push("/respostas")}>Respostas</li>
+            <li
+              className={
+                props.history.location.pathname == "/perguntas"
+                  ? "selected"
+                  : ""
+              }
+              onClick={() => props.history.push("/perguntas")}
+            >
+              Enviadas
+            </li>
+            <li
+              className={
+                props.history.location.pathname == "/respostas"
+                  ? "selected"
+                  : ""
+              }
+              onClick={() => props.history.push("/respostas")}
+            >
+              Recebidas
+            </li>
+            <li
+              className={
+                props.history.location.pathname == "/usuarios" ? "selected" : ""
+              }
+              onClick={() => props.history.push("/usuarios")}
+            >
+              Usuarios
+            </li>
           </ul>
           <li className="menu-title">Modelos</li>
           <ul>
-            <li onClick={() => props.history.push("/meus-modelos")}>
+            <li
+              className={
+                props.history.location.pathname == "/meus-modelos"
+                  ? "selected"
+                  : ""
+              }
+              onClick={() => props.history.push("/meus-modelos")}
+            >
               Meus Modelos
             </li>
-            <li onClick={() => props.history.push("/novo-modelo")}>
+            <li
+              className={
+                props.history.location.pathname == "/novo-modelo"
+                  ? "selected"
+                  : ""
+              }
+              onClick={() => props.history.push("/novo-modelo")}
+            >
               Criar Modelos
             </li>
           </ul>
-          <li className="menu-title">Gerenciar Conta</li>
-          <ul>
-            <li>Resumo</li>
-            <li>Editar Conta</li>
-            <li>Preferencias</li>
-          </ul>
+          <a
+            onClick={() => {
+              localStorage.removeItem("username");
+              localStorage.removeItem("token");
+              window.location.href = "/";
+            }}
+          >
+            Logout
+          </a>
         </ul>
       </div>
     </div>

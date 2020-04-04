@@ -56,3 +56,6 @@
   font-size: 12px;
   line-height: 40px;
 }
+.form-box {
+  margin-top: 0 !important;
+}

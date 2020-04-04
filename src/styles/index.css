@@ -12,6 +12,7 @@ body,
 a {
   text-decoration: none;
   color: #3db4a9;
+  cursor: pointer;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -20,7 +21,9 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #131313 inset !important;
   -webkit-text-fill-color: #727272 !important;
 }
-
+label {
+  cursor: pointer;
+}
 button {
   cursor: pointer;
 }

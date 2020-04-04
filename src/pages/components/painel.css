@@ -34,6 +34,14 @@
 .menu {
   margin-top: 30px;
 }
+.menu a {
+  margin-top: 20px;
+  display: block;
+  font-size: 13px;
+  padding: 5px;
+  width: 60px;
+  border: 1px solid #1e1e1e;
+}
 .menu ul {
   list-style-type: none;
   padding-left: 5px;
@@ -43,6 +51,9 @@
 .menu ul li:not(.menu-title) {
   padding-bottom: 10px;
   cursor: pointer;
+}
+.menu li.selected {
+  color: #3db4a9;
 }
 .menu .menu-title {
   font-weight: bold;

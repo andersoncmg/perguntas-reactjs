@@ -1,42 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
-import Painel from "../components/painel";
+import Painel from "../../components/painel";
+import base from "../../../config/api";
 
-export default function index(props) {
+export default function Modelos(props) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    base
+      .get("/question-models")
+      .then(res => {
+        setModelsList(res.data);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  const [modelsList, setModelsList] = useState([]);
+
   return (
     <div className="container">
       <div className="box-content stripe-top">
         <Painel {...props} />
         <div className="col-70 box-list">
           <ul>
-            <li className="list-item">
-              <div className="model-info">
-                <h4>Titulo do modelo</h4>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                </p>
-                <span>[tag1 , tag2 tag3]</span>
+            {!loading ? (
+              <>
+                {modelsList.map(item => (
+                  <li key={item.id} className="list-item">
+                    <div className="model-info">
+                      <h4>{item.title}</h4>
+                      {item.description ? <p>{item.description}</p> : ""}
+                      <span>{`Tipo: ${
+                        item.type == "text" ? "Texto" : "Multipla Escolha"
+                      }, Maximo de Caracteres: ${item.max_chars}`}</span>
+                    </div>
+                    <div className="price">
+                      <span>R$ </span>
+                      {item.price ? item.price : "Grátis"}
+                    </div>
+                    <button
+                      className="manage-button"
+                      onClick={() =>
+                        props.history.push(`/editar-modelo/${item.id}`)
+                      }
+                    >
+                      manage
+                    </button>
+                  </li>
+                ))}
+              </>
+            ) : (
+              <div style={{ textAlign: "center" }}>
+                <img src="/img/loading.gif" height="50px" />
               </div>
-              <div className="price">
-                <span>R$ </span>5,99
-              </div>
-              <button className="manage-button">manage</button>
-            </li>
-            <li className="list-item">
-              <div className="model-info">
-                <h4>Mais um do modelo</h4>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                </p>
-                <span>[tag1 , tag2 tag3]</span>
-              </div>
-              <div className="price">
-                <span>R$ </span>5,99
-              </div>
-              <button className="manage-button">manage</button>
-            </li>
+            )}
           </ul>
           <div></div>
         </div>

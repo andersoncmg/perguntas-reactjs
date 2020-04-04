@@ -1,0 +1,13 @@
+.user-list {
+  flex-direction: column;
+}
+.user-list ul {
+  width: 100%;
+}
+.user-list .list-item {
+  cursor: pointer;
+}
+
+.user-list a {
+  font-size: 12px;
+}

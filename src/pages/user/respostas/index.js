@@ -1,65 +1,22 @@
-import React, { useState } from "react";
-import Painel from "../components/painel";
+import React, { useState, useEffect } from "react";
+import Painel from "../../components/painel";
 import "./style.css";
 import AnswerBox from "./components/answerBox";
+import base from "../../../config/api";
 
 export default function Respostas(props) {
-  const [listaPerguntas2, setListaPerguntas2] = useState([
-    {
-      id: 1,
-      name: "Quantos anos vc tem?",
-      resposta: "Alguma resposta generica",
-      modelo: "algum",
-      por: "Fernando"
-    },
-    {
-      id: 2,
-      name: "Quais seus hobbies favoritos",
-      resposta: "Alguma resposta generica",
-      modelo: "outro",
-      por: "Roberto"
-    },
-    {
-      id: 3,
-      name: "Alguma pergunta invisivel",
-      resposta: "Alguma resposta generica",
-      modelo: "nao sei qual",
-      por: "Maria"
-    },
-    {
-      id: 4,
-      name: "Mais uma pergunta exemplo",
-      resposta: "Alguma resposta generica",
-      modelo: "algum outro",
-      por: "Mateus"
-    }
-  ]);
+  const [loading, setLoading] = useState(true);
 
-  const [listaPerguntas, setListaPerguntas] = useState([
-    {
-      id: 1,
-      name: "Quantos anos vc tem meu jovem?",
-      modelo: "algum",
-      por: "Fernando",
-      tipo: 2,
-      options: ["Mais de 10", "Menos de 98", "34 anos"]
-    },
-    {
-      id: 3,
-      name: "Alguma pergunta invisivel",
-      modelo: "nao sei qual",
-      por: "Maria",
-      tipo: 1
-    },
-    {
-      id: 4,
-      name: "Mais uma pergunta exemplo",
-      modelo: "algum outro",
-      por: "Mateus",
-      tipo: 1
-    }
-  ]);
+  useEffect(() => {
+    base
+      .get("/questions")
+      .then((res) => {
+        setQuestionList(res.data);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
+  const [questionList, setQuestionList] = useState([]);
   const [tabSwitcher, setTabSwitcher] = useState(0);
 
   return (
@@ -85,25 +42,60 @@ export default function Respostas(props) {
             <div id="tab-content">
               {tabSwitcher == 0 ? (
                 <ul>
-                  {listaPerguntas.map(item => (
-                    <li className="list-item" key={item.id}>
-                      <AnswerBox {...item} />
-                    </li>
-                  ))}
+                  {questionList.map((question) => {
+                    if (!question.answer) {
+                      return (
+                        <li className="list-item" key={question.id}>
+                          <AnswerBox {...question} />
+                        </li>
+                      );
+                    }
+                  })}
                 </ul>
               ) : (
                 <ul>
-                  {listaPerguntas2.map(item => (
-                    <li className="list-item" key={item.id}>
-                      <div className="question-box">
-                        <strong>{item.name}</strong>
-                        <p>{item.resposta}</p>
-                        <span>
-                          Por: <a href="#">{item.por}</a>
-                        </span>
-                      </div>
-                    </li>
-                  ))}
+                  {questionList.map((question) => {
+                    if (question.answer) {
+                      return (
+                        <li className="list-item" key={question.id}>
+                          <div className="question-box">
+                            <strong>{question.text}</strong>
+                            {question.questionModel.type == "text" ? (
+                              <p>{question.answer.text}</p>
+                            ) : (
+                              JSON.parse(question.options).map(
+                                (item, index) => {
+                                  let opt =
+                                    question.answer.option == index
+                                      ? { checked: "checked" }
+                                      : { disabled: "disabled" };
+                                  return (
+                                    <div
+                                      className="input-group"
+                                      key={`option-${index}`}
+                                    >
+                                      <input
+                                        type="radio"
+                                        {...opt}
+                                        onChange={() => null}
+                                      />
+                                      <label>{item}</label>
+                                    </div>
+                                  );
+                                }
+                              )
+                            )}
+                            <span>
+                              Por:{" "}
+                              <a href={`/perfil/${question.user.id}`}>
+                                {question.user.username}
+                              </a>
+                            </span>
+                          </div>
+                        </li>
+                      );
+                    }
+                  })}
                 </ul>
               )}
             </div>

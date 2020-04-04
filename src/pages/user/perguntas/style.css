@@ -61,3 +61,11 @@
 #tab-content {
   padding: 10px;
 }
+.waiting_answer {
+  width: 180px;
+  font-size: 12px;
+  border: 1px solid #be3f3f;
+  line-height: 25px;
+  text-align: center;
+  margin-top: 10px;
+}

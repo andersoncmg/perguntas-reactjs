@@ -51,8 +51,9 @@
 }
 .form-group {
   position: relative;
+  display: flex;
 }
-.form-group label:first-child {
+.form-group label {
   position: absolute;
   left: 10px;
   top: 3px;
@@ -69,4 +70,12 @@
 }
 .input-group label {
   margin-left: 10px;
+}
+.input-comlum {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input-comlum:first-child {
+  margin-right: 10px;
 }

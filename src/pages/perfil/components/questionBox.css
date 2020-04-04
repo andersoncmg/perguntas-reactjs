@@ -1,0 +1,24 @@
+.answerForm {
+  display: flex;
+  flex-direction: column;
+}
+.answerForm label {
+  line-height: 50px;
+}
+.answerButtons {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #1e1e1e;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.answerButtons button {
+  margin-right: 10px;
+  width: 80px !important;
+  padding: 10px !important;
+}
+.answerButtons button.back {
+  background: none;
+  border: 1px solid #349d94;
+}

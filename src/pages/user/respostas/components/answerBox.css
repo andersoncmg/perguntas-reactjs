@@ -19,3 +19,10 @@
 .question-box {
   width: 100%;
 }
+.error-answer {
+  border: 1px solid #be3f3f;
+  width: 50%;
+  text-align: center;
+  font-size: 13px;
+  line-height: 30px;
+}
